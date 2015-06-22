@@ -14,7 +14,7 @@
 #' @export
 shinyTree <- function(outputId, checkbox=FALSE, search=FALSE, dragAndDrop=FALSE){
   searchEl <- shiny::div("")
-  if (search == TRUE){
+  if (search == TRUE) {
     search <- paste0(outputId, "-search-input")
     searchEl <- shiny::tags$input(id=search, class="input", type="text", value="")
   }

@@ -21,10 +21,52 @@ var shinyTree = function(){
       if ($elem.data('st-dnd') === 'TRUE'){
         plugins.push('dnd');
       }
+
+     //$(el).bind("select_node.jstree", function (e, data) {
+    //    return data.instance.toggle_node(data.node);
+    // });
+    
+    
+    /*
+      window.prev = null;    
+      
+      $(el).bind('select_node.jstree', function (e, data) {       
+        if (window.prev!=null) {          
+          found=false;          
+          
+          for (var i = 0; i < data.node.parents.length; i++) {                                  
+            if (data.node.parents[1]==window.prev.node.parents[1]) {
+              found=true; // siblings
+              window.prev.instance.close_node(window.prev.node);
+            }
+             if (data.node.parents[i]==window.prev.node.id) {
+               found=true; 
+              }            
+          }
+
+          if (!found) {
+            for (var i = 0; i < window.prev.node.parents.length; i++) {                        
+            //for (var i = 0; i < 1; i++) {                        
+              window.prev.instance.close_node(window.prev.node.parents[i]);
+            }            
+            window.prev.instance.close_node(window.prev.node);
+          }
+        }
+        data.instance.open_node(data.node);                        
+        data.instance._open_to(data.node);                        
+        window.prev = data;
+      }).bind('open_node.jstree', function (e, data) {    
+                
+      });      
+      */      
       
       var tree = $(el).jstree({'core' : {
         "check_callback" : ($elem.data('st-dnd') === 'TRUE')
       },plugins: plugins});
+        
+      //  console.log(tree);
+      
+      
     }
   });
   Shiny.outputBindings.register(treeOutput, 'shinyTree.treeOutput');
@@ -57,6 +99,7 @@ var shinyTree = function(){
         keys.push('children');
         
         $.each(arr, function(i, obj){
+          
           if (obj.children && obj.children.length > 0){
             obj.children = arrToObj(prune(obj.children, keys));
           }
