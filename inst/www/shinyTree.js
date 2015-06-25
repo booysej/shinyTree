@@ -137,7 +137,7 @@ var shinyTree = function(){
       var tree = $.jstree.reference(el);
       if (tree){ // May not be loaded yet.        
         var js = tree.get_json();
-        console.log(js);
+        //console.log(js);
         var pruned =  prune(js, ['state', 'text', 'li_attr']);
         return pruned;
       }
