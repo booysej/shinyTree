@@ -22,17 +22,23 @@ var shinyTree = function(){
         plugins.push('dnd');
       }
 
-     //$(el).bind("select_node.jstree", function (e, data) {
-    //    return data.instance.toggle_node(data.node);
-    // });
+     $(el).bind("select_node.jstree", function (e, data) {
+        return data.instance.toggle_node(data.node);
+     });
     
     
     /*
       window.prev = null;    
       
       $(el).bind('select_node.jstree', function (e, data) {       
+        
+        //console.log(data);
+        //console.log($("#preview").jstree("get_selected"))
+        
         if (window.prev!=null) {          
           found=false;          
+          
+          
           
           for (var i = 0; i < data.node.parents.length; i++) {                                  
             if (data.node.parents[1]==window.prev.node.parents[1]) {
@@ -58,8 +64,8 @@ var shinyTree = function(){
       }).bind('open_node.jstree', function (e, data) {    
                 
       });      
-      */      
-      
+         
+      */
       var tree = $(el).jstree({'core' : {
         "check_callback" : ($elem.data('st-dnd') === 'TRUE')
       },plugins: plugins});
@@ -129,8 +135,9 @@ var shinyTree = function(){
       }
       
       var tree = $.jstree.reference(el);
-      if (tree){ // May not be loaded yet.
+      if (tree){ // May not be loaded yet.        
         var js = tree.get_json();
+        console.log(js);
         var pruned =  prune(js, ['state', 'text', 'li_attr']);
         return pruned;
       }
