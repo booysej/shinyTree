@@ -24,7 +24,8 @@ var shinyTree = function(){
 
      $(el).bind("select_node.jstree", function (e, data) {
               
-          //var jsonString = data.instance.get_node(data.selected[0]).data.jstree;         
+          //var jsonString = data.instance.get_node(data.selected[0]);         
+          //console.log(jsonString)
           //console.log(jsonString.split(',')[0].split(':')[1]);
           //Shiny.onInputChange(el.id+ '_leafnode', jsonString.split(',')[0].split(':')[1]);
         
