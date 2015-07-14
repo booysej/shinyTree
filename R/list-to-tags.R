@@ -41,24 +41,24 @@ listToTags <- function(myList, parent=shiny::tags$ul()){
 getJSON <- function(node){
   attrib <- NULL
   
-  # Get name (key)
-  key <- attr(node, "name")
-  if (!is.null(key)){
-    attrib <- c(attrib, paste("\"name\": ",key,sep="") )
-  }
-  
-  # Get input.full
-  key <- attr(node, "input.full")
-  if (!is.null(key)){
-    attrib <- c(attrib, paste("\"input_full\": ",key,sep="") )
-  }  
-  
-  # Get input.full
-  key <- attr(node, "output.full")
-  if (!is.null(key)){
-    attrib <- c(attrib, paste("\"output_full\": ",key,sep="") )
-  }  
-  
+#   # Get name (key)
+#   key <- attr(node, "name")
+#   if (!is.null(key)){
+#     attrib <- c(attrib, paste("\"name\": ",key,sep="") )
+#   }
+#   
+#   # Get input.full
+#   key <- attr(node, "input.full")
+#   if (!is.null(key)){
+#     attrib <- c(attrib, paste("\"input_full\": ",key,sep="") )
+#   }  
+#   
+#   # Get input.full
+#   key <- attr(node, "output.full")
+#   if (!is.null(key)){
+#     attrib <- c(attrib, paste("\"output_full\": ",key,sep="") )
+#   }  
+#   
   
   # Handle 'opened' attribute
   opened <- attr(node, "stopened")
