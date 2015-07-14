@@ -23,6 +23,11 @@ var shinyTree = function(){
       }
 
      $(el).bind("select_node.jstree", function (e, data) {
+              
+          var jsonString = data.instance.get_node(data.selected[0]).data.jstree;         
+          
+        Shiny.onInputChange(el.id+ '_leafnode', jsonString.split(',')[0].split(':')[1]);
+        
         return data.instance.toggle_node(data.node);
      });
     
@@ -103,6 +108,7 @@ var shinyTree = function(){
         var toReturn = [];
         // Ensure 'children' property is retained.
         keys.push('children');
+        keys.push('li_attr');
         
         $.each(arr, function(i, obj){
           
@@ -112,6 +118,7 @@ var shinyTree = function(){
           var clean = {};
           $.each(obj, function(key, val){
             if (keys.indexOf(key) >= 0){
+              /*
               if (key === 'li_attr'){ // We don't really want, just the class attr
                 if (!val.class){
                   // Skip without adding element.
@@ -119,7 +126,7 @@ var shinyTree = function(){
                 }
                 val = val.class;
                 key = 'class';
-              }
+              } */
               
               if (typeof val === 'string'){
                 // TODO: We don't really want to trim but have to b/c of Shiny's pretty-printing.
@@ -139,7 +146,9 @@ var shinyTree = function(){
         var js = tree.get_json();
         //console.log(js);
         var pruned =  prune(js, ['state', 'text', 'li_attr']);
+        //console.log(pruned);
         return pruned;
+        //return js;        
       }
       
     },

@@ -26,10 +26,16 @@ get_selected_names <- function(tree, ancestry=NULL, vec=list()){
     }    
   }
   
+  nm <- attr(tree, "name", TRUE)
   a <- attr(tree, "stselected", TRUE)
   if (!is.null(a) && a == TRUE){
-    # Get the element name
-    el <- tail(ancestry,n=1)
+    # Get the element name    
+    if (!is.null(nm)) {
+      el <- nm
+    } else {
+      el <- tail(ancestry,n=1)  
+    }
+    
     vec[length(vec)+1] <- el
     attr(vec[[length(vec)]], "ancestry") <- head(ancestry, n=length(ancestry)-1)
   }

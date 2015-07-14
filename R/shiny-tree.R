@@ -18,7 +18,7 @@ shinyTree <- function(outputId, checkbox=FALSE, search=FALSE, dragAndDrop=FALSE)
     search <- paste0(outputId, "-search-input")
     searchEl <- shiny::tags$input(id=search, class="input", type="text", value="")
   }
-  if (is.character(search)){
+  if (is.character(search)) {
     # Either the search field we just created or the given text field ID
     searchEl <- shiny::tagAppendChild(searchEl, shiny::tags$script(type="text/javascript", shiny::HTML(
       paste0("shinyTree.initSearch('",outputId,"','",search,"');"))))
