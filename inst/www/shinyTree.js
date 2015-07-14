@@ -26,7 +26,7 @@ var shinyTree = function(){
               
           var jsonString = data.instance.get_node(data.selected[0]).data.jstree;         
           console.log(jsonString.split(',')[0].split(':')[1]);
-          Shiny.onInputChange(el.id+ '_leafnode', jsonString.split(',')[0].split(':')[1]);
+          //Shiny.onInputChange(el.id+ '_leafnode', jsonString.split(',')[0].split(':')[1]);
         
         return data.instance.toggle_node(data.node);
      });
